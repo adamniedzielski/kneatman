@@ -1,0 +1,17 @@
+<h1>
+  Generate exchange difference document - step 1
+</h1>
+
+<p>
+  Please provide your key to inFakt API and invoice ID (it's in the URL).
+</p>
+
+<%= form_for @conn, generator_path(@conn, :fetch_invoice_details), [as: :infakt], fn f -> %>
+  <%= label f, :api_key, "API key" %>
+  <%= text_input f, :api_key %>
+  <br/>
+  <%= label f, :invoice_id, "Invoice ID" %>
+  <%= text_input f, :invoice_id %>
+  <br/>
+  <%= submit "Fetch invoice" %>
+<% end %>

@@ -62,3 +62,4 @@ config :kneatman, Kneatman.Endpoint,
 #
 #     config :kneatman, Kneatman.Endpoint, root: "."
 
+config :kneatman, :infakt_api, Kneatman.InFaktAPI.HTTP

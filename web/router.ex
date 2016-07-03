@@ -12,6 +12,8 @@ defmodule Kneatman.Router do
   scope "/", Kneatman do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", GeneratorController, :new
+    post "/fetch_invoice_details", GeneratorController, :fetch_invoice_details
+    post "/generate_document", GeneratorController, :generate_document
   end
 end
