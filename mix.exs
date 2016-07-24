@@ -24,7 +24,8 @@ defmodule Kneatman.Mixfile do
         :cowboy,
         :logger,
         :gettext,
-        :httpoison
+        :httpoison,
+        :calendar
       ]
     ]
   end
@@ -45,7 +46,10 @@ defmodule Kneatman.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:httpoison, "~> 0.9"},
-      {:wallaby, "~> 0.7"}
+      {:wallaby, "~> 0.7"},
+      {:decimal, "~> 1.1"},
+      {:calendar, "~> 0.16"},
+      {:graffinite, "~> 0.4"}
     ]
   end
 end
