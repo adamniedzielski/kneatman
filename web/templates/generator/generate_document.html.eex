@@ -1,0 +1,32 @@
+<h1>
+  Calculation of the currency exchange differences for invoice <%= @document.invoice_number %> issued <%= @document.issue_date %>
+</h1>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        Amount on the invoice <%= display_money(@document.issue_amount_in_cents) %> x <%= @document.issue_rate |> Decimal.to_string %> (<%= @document.issue_currency %> exchange rate for <%= @document.issue_rate_date %>)
+      </td>
+      <td>
+        <%= display_money(@document.converted_issue_amount_in_cents) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Payment <%= @document.payment_date %>
+        <%= if !@document.was_paid_in_pln do %>
+          <%= display_money(@document.issue_amount_in_cents) %> x <%= @document.payment_rate |> Decimal.to_string %> (<%= @document.issue_currency %> exchange rate for <%= @document.payment_rate_date %>)
+        <% end %>
+      </td>
+      <td>
+        <%= display_money(@document.converted_payment_amount_in_cents) %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <%= display_money(@document.difference_in_cents) %>
+      </td>
+    </tr>
+  </tbody>
+</table>

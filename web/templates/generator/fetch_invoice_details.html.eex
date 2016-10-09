@@ -10,7 +10,7 @@
     </tr>
     <tr>
       <td>Amount</td>
-      <td><%= @invoice.amount_in_cents %></td>
+      <td><%= display_money(@invoice.amount_in_cents) %></td>
     </tr>
     <tr>
       <td>Invoice currency</td>
@@ -25,17 +25,17 @@
 
 <%= form_for @conn, generator_path(@conn, :generate_document), [as: :invoice], fn f -> %>
   <%= hidden_input f, :number, value: @invoice.number %>
-  <%= hidden_input f, :original_amount, value: @invoice.amount_in_cents %>
-  <%= hidden_input f, :original_currency, value: @invoice.currency %>
+  <%= hidden_input f, :issue_amount_in_cents, value: @invoice.amount_in_cents %>
+  <%= hidden_input f, :issue_currency, value: @invoice.currency %>
   <%= hidden_input f, :issue_date, value: @invoice.issue_date %>
-  <%= label f, :paid_date, "Paid date" %>
-  <%= text_input f, :paid_date %>
+  <%= label f, :payment_date, "Payment date" %>
+  <%= text_input f, :payment_date %>
   <br/>
-  <%= label f, :paid_currency, "Paid currency" %>
-  <%= text_input f, :paid_currency %>
+  <%= label f, :payment_currency, "Paid currency" %>
+  <%= text_input f, :payment_currency %>
   <br/>
-  <%= label f, :paid_amount, "Paid amount" %>
-  <%= text_input f, :paid_amount %>
+  <%= label f, :payment_amount_in_pln, "Paid amount" %>
+  <%= text_input f, :payment_amount_in_pln %>
   <br/>
   <%= submit "Generate" %>
 <% end %>
